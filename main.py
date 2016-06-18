@@ -3,15 +3,19 @@ def double(p):
     return p
   else:
     if type(p[0]) == list:
-      if type(p[0][0]) == list:
         return double(p[0][0])
+  return p
 #Changes a ~~p => p in one item
 
-def remove_double(p):
-  pass
-#remove_double should remove all [[p]]'s and replace them with p's
-"""
-TODO: FIX THIS remove_double
-I CAN'T GET IT TO WORK!!!!!
-SCREW YOU PASS BY VALUE!
-"""
+
+def remove_double_(arg):
+  arg = double(arg)
+  if type(arg)!=list:
+    return arg
+  for i in range(len(arg)):
+    if type(arg[i]) == list:
+      arg[i] = remove_double_(arg[i])
+  return arg
+
+def remove_double(arg):
+ arg = remove_double_(arg)
