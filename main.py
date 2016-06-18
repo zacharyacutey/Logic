@@ -2,7 +2,8 @@ def double(p):
   if type(p) != list:
     return p
   else:
-    if type(p[0]) == list:
+    if type(p[0]) == list and len(p) == 1:
+      if len(p[0]) == 1:
         return double(p[0][0])
   return p
 #Changes a ~~p => p in one item
