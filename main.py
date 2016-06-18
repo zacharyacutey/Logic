@@ -12,7 +12,7 @@ def is_dead(p):
   return False
   
 def remove_double(p):
-  if type(i) != list:
+  if type(p) != list:
     return
   p = double(p)
   for i in range(len(p)):
