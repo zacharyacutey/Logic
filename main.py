@@ -8,15 +8,11 @@ def double(p):
 #Changes a ~~p => p in one item
 
 
-def remove_double_(arg):
+def remove_double(arg):
   arg = double(arg)
   if type(arg)!=list:
     return arg
   for i in range(len(arg)):
     if type(arg[i]) == list:
-      arg[i] = remove_double_(arg[i])
+      arg[i] = remove_double(arg[i])
   return arg
-
-def remove_double(arg):
- arg = remove_double_(arg)
-
