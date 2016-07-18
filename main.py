@@ -70,6 +70,7 @@ def deduce():
     deduce()
     return None
   return None
+  verify()
 def verify():
   for i in truths:
     for j in truths:
