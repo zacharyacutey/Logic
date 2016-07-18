@@ -77,3 +77,11 @@ def verify():
       if i == [j]:
         print("Contradiction! Go fix this! FIX THIS AXIOMATIC SYSTEM!")
         assert(0)
+
+def display(p):
+  if type(p) == str:
+    return p
+  elif len(p) == 1:
+    return '(~'+display(p[0])+')'
+  elif len(p) == 2:
+    return '('+display(p[0])+'->'+display(p[1])+')'
