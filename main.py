@@ -32,9 +32,10 @@ def contrapositive(p):
 
 def add_contrapositives():
   for i in truths:
-    if not ( contrapositive(i) in truths ):
-      define_truth(contrapositive(i))
-      return True
+    if type(i) == list and len(i) == 2:
+      if not ( contrapositive(i) in truths ):
+        define_truth(contrapositive(i))
+        return True
   return False
 
 def add_transitives():
@@ -69,3 +70,9 @@ def deduce():
     deduce()
     return None
   return None
+def verify():
+  for i in truths:
+    for j in truths:
+      if i == [j]:
+        print("Contradiction! Go fix this! FIX THIS AXIOMATIC SYSTEM!")
+        assert(0)
