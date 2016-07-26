@@ -85,3 +85,12 @@ def display(p):
     return '(~'+display(p[0])+')'
   elif len(p) == 2:
     return '('+display(p[0])+'->'+display(p[1])+')'
+attempt_to_parse_using_sympy = True #Homage to Garrett. I only use this once... so... Yeah
+
+
+
+def parse(s):
+  if attempt_to_parse_using_sympy:
+    from sympy import * #I'll eventually make my own since Sympy Already has it. *SIGH*
+    from sympy.parsing.sympy_parser import parse_expr
+    s = str(parse_expr(s)):
