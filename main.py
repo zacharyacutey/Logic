@@ -75,8 +75,8 @@ def deduce():
   if add_detachments():
     deduce()
     return None
-  return None
   verify()
+  return None
 def verify():
   for i in truths:
     for j in truths:
