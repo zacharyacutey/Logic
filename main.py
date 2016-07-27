@@ -1,3 +1,9 @@
+class Test:
+ def __init__(self):
+  pass
+ def __getitem__(self,p):
+  return p
+selfdict = Test()
 def double(p):
   if type(p) != list:
     return p
@@ -89,8 +95,18 @@ attempt_to_parse_using_sympy = True #Homage to Garrett. I only use this once... 
 
 
 
-def parse(s):
+def parse(s_):
   if attempt_to_parse_using_sympy:
-    from sympy import * #I'll eventually make my own since Sympy Already has it. *SIGH*
     from sympy.parsing.sympy_parser import parse_expr
-    s = str(parse_expr(s)):
+    from replace import sreplace
+    toparse = sreplace({'->':'>>'},s_)
+    sympyish = str(parse_expr(toparse))
+    dollar = sreplace({'Not':'$Not','Implies':'$Implies'},sympyish)
+    rules = {}
+    import re
+    p = re.compile('(?<![\\$a-zA-Z0-9_])([a-zA-Z_][a-zA-Z_0-9]*)')
+    subst = '\\g<0>'
+    evalresult = re.sub(p, subst, dollar)
+    return eval(sreplace({"$Implies(":"[","$Not(":"[",")":"]"},dollar),{},selfdict)
+def define_parse_truth(s):
+  define_truth(parse(s))
